@@ -7,6 +7,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.format.annotation.DateTimeFormat;
+import tn.esprit.spring.Configuration.TrackExecutionTime;
 import tn.esprit.spring.Repositories.CliniqueRepository;
 import tn.esprit.spring.Repositories.MedecinRepository;
 import tn.esprit.spring.Repositories.PatientRepository;
@@ -105,6 +106,7 @@ public class RendezVousController {
     }
     @GetMapping(value = "/getRevnue/{idMedecin}/{startDate}/{endDate}")
     @ResponseBody
+    @TrackExecutionTime
     public int getRevenuMedecin (@PathVariable("idMedecin") int idMedecin,
             @PathVariable("startDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate,
             @PathVariable("endDate") @DateTimeFormat(pattern = "yyyy-MM-dd")Date endDate

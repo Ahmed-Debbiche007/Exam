@@ -1,5 +1,6 @@
 package tn.esprit.spring.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -31,5 +32,6 @@ public class Medecin {
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Clinique> cliniques;
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER, mappedBy="medecin")
+    @JsonIgnore
     private Set<RendezVous> rdvs;
 }

@@ -59,13 +59,7 @@ public class MedecinController {
 
     @GetMapping(value = "/getAll")
     @ResponseBody
-    public List<String> getAll() {
-
-        List<Medecin> l = (List<Medecin>) repo.findAll();
-        List<String> list = new ArrayList<String>();
-        for (Medecin m : l) {
-            list.add(m.getNommedecin());
-        }
-        return list;
+    public List<Medecin> getAll() {
+        return  (List<Medecin>) repo.findAll();
     }
 }

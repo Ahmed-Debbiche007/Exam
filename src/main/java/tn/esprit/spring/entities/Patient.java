@@ -1,6 +1,7 @@
 package tn.esprit.spring.entities;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -26,6 +27,7 @@ public class Patient {
     private Date dateNaissance;
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER, mappedBy="patient")
+    @JsonIgnore
     private Set<RendezVous> rdvs;
 
 
