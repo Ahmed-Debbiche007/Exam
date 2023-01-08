@@ -23,8 +23,8 @@ public class OpenAPIConfig {
     }
 
     public Info infoAPI() {
-        return new Info().title("Test")
-                .description("This is a springboot test")
+        return new Info().title("EXAM - JAN - 2023")
+                .description("This is a springboot exam")
                 .contact(contactAPI());
     }
 

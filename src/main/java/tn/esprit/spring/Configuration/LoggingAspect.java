@@ -23,23 +23,9 @@ public class LoggingAspect {
     private static final Logger logger =
             LogManager.getLogger(LoggingAspect.class);
 
-    @Around("@annotation(tn.esprit.spring.Configuration.TrackExecutionTime)")
-    public Object executionTime(ProceedingJoinPoint point) throws Throwable {
-        long startTime = System.currentTimeMillis();
-        Object object = point.proceed();
-        long endtime = System.currentTimeMillis();
-        log.info("Method Name: " + point.getSignature().getName() + ". Time taken for Execution is : " + (endtime - startTime) + "ms");
-        return object;
-    }
-
-    @Pointcut("@annotation(org.springframework.web.bind.annotation.PostMapping)")
-    public void postAction() {
-    }
-
-    @After("postAction()")
-    public void logAction(JoinPoint joinPoint) {
-
-        logger.info("Méthode Exécutée: "+joinPoint.getSignature().getName());
+    @AfterReturning("execution(* tn.esprit.spring.controllers.*.MontantApayerParClient(..))")
+    public void afficher (JoinPoint joinPoint){
+        logger.info("Montant Facture Calculé!");
     }
 
 }
